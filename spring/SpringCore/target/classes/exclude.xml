@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+<context:component-scan base-package="com.rays.exclude"></context:component-scan>
+	
+	<bean id="userService" class="com.rays.exclude.UserService" >
+	<constructor-arg value="shivanshi"></constructor-arg>
+	</bean>
+	
+	<bean id="userServiceToExclude" class="com.rays.exclude.UserService" autowire-candidate="false" primary="true">
+	<constructor-arg value="lansi"></constructor-arg>
+	</bean>
+	
+	<bean id="anotherService" class="com.rays.exclude.AnotherService"></bean>
+	<bean id="testAutowire" class="com.rays.exclude.TestAutowire" autowire="byType"></bean>
+	</beans>
